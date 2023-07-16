@@ -48,11 +48,20 @@ final class ScannerVC: UIViewController {
         if captureSession.canAddOutput(metaDataOutput) {
             captureSession.addOutput(metaDataOutput)
             metaDataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            // array of types of barcodes we want to scan
+            metaDataOutput.metadataObjectTypes = [.ean8, .ean13]
         } else { return }
         
+        // Done with checks - if we're down here our capture session is good to go and we can
+        // set it to our preview layer
+        // setup preview layer with our capture session
+        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        previewLayer!.videoGravity = .resizeAspectFill
+        view.layer.addSublayer(previewLayer!)
     }
 }
 
+// what we want to do once we find the barcode
 extension ScannerVC: AVCaptureMetadataOutputObjectsDelegate {
     // come back
 }

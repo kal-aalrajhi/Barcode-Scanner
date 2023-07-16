@@ -30,7 +30,26 @@ final class ScannerVC: UIViewController {
         self.scannerDelegate = scannerDelegate
     }
     
-    required init?(coder: NSCoder) { fatalError("init(coder:) has no been implemented")}
+    required init?(coder: NSCoder) { fatalError("init(coder:) has no been implemented") }
+    
+    // Life cycle method - we need to call our function
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupCaptureSession()
+    }
+    
+    // Life cycle method - setup our preview layer after our view did setup subviews
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        guard let previewLayer = previewLayer else {
+            scannerDelegate?.didSurface(error: .invalidDeviceInput)
+            return
+        }
+        
+        previewLayer.frame = view.layer.bounds
+    }
+    
     
     // This will get our scanner up and running
     private func setupCaptureSession() {

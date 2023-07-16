@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B72824682A6390C300211D62 /* ScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72824672A6390C300211D62 /* ScannerVC.swift */; };
 		B75432EF2A62EB930048FE35 /* Barcode_ScannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75432EE2A62EB930048FE35 /* Barcode_ScannerApp.swift */; };
 		B75432F32A62EB940048FE35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B75432F22A62EB940048FE35 /* Assets.xcassets */; };
 		B75432F62A62EB940048FE35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B75432F52A62EB940048FE35 /* Preview Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B72824672A6390C300211D62 /* ScannerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerVC.swift; sourceTree = "<group>"; };
 		B75432EB2A62EB930048FE35 /* Barcode Scanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Barcode Scanner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75432EE2A62EB930048FE35 /* Barcode_ScannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barcode_ScannerApp.swift; sourceTree = "<group>"; };
 		B75432F22A62EB940048FE35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -35,6 +37,7 @@
 		B75432E22A62EB930048FE35 = {
 			isa = PBXGroup;
 			children = (
+				B72824672A6390C300211D62 /* ScannerVC.swift */,
 				B75432ED2A62EB930048FE35 /* Barcode Scanner */,
 				B75432EC2A62EB930048FE35 /* Products */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B72824682A6390C300211D62 /* ScannerVC.swift in Sources */,
 				B75432FD2A62EC100048FE35 /* BarcodeScannerView.swift in Sources */,
 				B75432EF2A62EB930048FE35 /* Barcode_ScannerApp.swift in Sources */,
 			);

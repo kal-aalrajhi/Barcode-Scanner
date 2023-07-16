@@ -27,6 +27,32 @@ final class ScannerVC: UIViewController {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has no been implemented")}
     
-    
-    
+    // This will get our scanner up and running
+    private func setupCaptureSession() {
+        // Check if we even have a device that can capture video
+        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
+        
+        // Get video device
+        let videoInput: AVCaptureDeviceInput
+        do {
+            try videoInput = AVCaptureDeviceInput(device: videoCaptureDevice)
+        } catch { return }
+        
+        // Check if you can add input into video
+        if captureSession.canAddInput(videoInput) {
+            captureSession.addInput(videoInput)
+        } else { return }
+        
+        // Check if we can get metadata (what's being scanned/captured)
+        let metaDataOutput = AVCaptureMetadataOutput()
+        if captureSession.canAddOutput(metaDataOutput) {
+            captureSession.addOutput(metaDataOutput)
+            metaDataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+        } else { return }
+        
+    }
+}
+
+extension ScannerVC: AVCaptureMetadataOutputObjectsDelegate {
+    // come back
 }

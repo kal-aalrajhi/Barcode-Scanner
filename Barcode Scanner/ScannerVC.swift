@@ -66,5 +66,20 @@ final class ScannerVC: UIViewController {
 
 // what we want to do once we find the barcode
 extension ScannerVC: AVCaptureMetadataOutputObjectsDelegate {
-    // come back
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        
+        // Check that we have at least one metadata object captured in our array
+        guard let object = metadataObjects.first else {
+            return
+        }
+        
+        // Is it machine readable
+        guard let machineReadableObject = object as? AVMetadataMachineReadableCodeObject else { return }
+        
+        // Get the string value
+        guard let barcode = machineReadableObject.stringValue else { return }
+        
+        // Send value to our delegate (the thing that talks to swiftUI)
+        scannerDelegate?.didFind(barcode: barcode)
+    }
 }

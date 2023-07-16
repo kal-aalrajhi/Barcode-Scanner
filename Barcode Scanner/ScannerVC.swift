@@ -122,6 +122,9 @@ extension ScannerVC: AVCaptureMetadataOutputObjectsDelegate {
             return
         }
         
+        // Stops running as soon as barcode is detected
+        captureSession.stopRunning()
+        
         // Send value to our delegate (the thing that talks to swiftUI)
         scannerDelegate?.didFind(barcode: barcode)
     }

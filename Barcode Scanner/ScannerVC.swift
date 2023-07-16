@@ -58,6 +58,9 @@ final class ScannerVC: UIViewController {
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer!.videoGravity = .resizeAspectFill
         view.layer.addSublayer(previewLayer!)
+        
+        // begin capture session
+        captureSession.startRunning()
     }
 }
 

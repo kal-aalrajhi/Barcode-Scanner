@@ -16,7 +16,7 @@ enum CameraError: String {
 // we're saying what we want to send over
 protocol ScannerVCDelegate: class {
     func didFind(barcode: String)
-    
+    func didSurface(error: CameraError)
 }
 
 final class ScannerVC: UIViewController {
@@ -35,18 +35,28 @@ final class ScannerVC: UIViewController {
     // This will get our scanner up and running
     private func setupCaptureSession() {
         // Check if we even have a device that can capture video
-        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
+        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
+            scannerDelegate?.didSurface(error: .invalidDeviceInput)
+            return
+        }
         
         // Get video device
         let videoInput: AVCaptureDeviceInput
         do {
             try videoInput = AVCaptureDeviceInput(device: videoCaptureDevice)
-        } catch { return }
+        } catch {
+            scannerDelegate?.didSurface(error: .invalidDeviceInput)
+            return
+            
+        }
         
         // Check if you can add input into video
         if captureSession.canAddInput(videoInput) {
             captureSession.addInput(videoInput)
-        } else { return }
+        } else {
+            scannerDelegate?.didSurface(error: .invalidDeviceInput)
+            return
+        }
         
         // Check if we can get metadata (what's being scanned/captured)
         let metaDataOutput = AVCaptureMetadataOutput()
@@ -55,10 +65,12 @@ final class ScannerVC: UIViewController {
             metaDataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             // array of types of barcodes we want to scan
             metaDataOutput.metadataObjectTypes = [.ean8, .ean13]
-        } else { return }
+        } else {
+            scannerDelegate?.didSurface(error: .invalidDeviceInput)
+            return
+        }
         
-        // Done with checks - if we're down here our capture session is good to go and we can
-        // set it to our preview layer
+        // Done with checks - if we're down here our capture session is good to go and we can set it to our preview layer
         // setup preview layer with our capture session
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer!.videoGravity = .resizeAspectFill

@@ -8,6 +8,11 @@
 import UIKit
 import AVFoundation
 
+enum CameraError: String {
+    case invalidDeviceInput = "Unable to capture the input."
+    case invalidScannedValue = "The value scanned is not valid. Please scan EAN-8 and EAN-13 barcodes."
+}
+
 // we're saying what we want to send over
 protocol ScannerVCDelegate: class {
     func didFind(barcode: String)

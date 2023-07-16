@@ -87,14 +87,21 @@ extension ScannerVC: AVCaptureMetadataOutputObjectsDelegate {
         
         // Check that we have at least one metadata object captured in our array
         guard let object = metadataObjects.first else {
+            scannerDelegate?.didSurface(error: .invalidScannedValue)
             return
         }
         
         // Is it machine readable
-        guard let machineReadableObject = object as? AVMetadataMachineReadableCodeObject else { return }
+        guard let machineReadableObject = object as? AVMetadataMachineReadableCodeObject else {
+            scannerDelegate?.didSurface(error: .invalidScannedValue)
+            return
+        }
         
         // Get the string value
-        guard let barcode = machineReadableObject.stringValue else { return }
+        guard let barcode = machineReadableObject.stringValue else {
+            scannerDelegate?.didSurface(error: .invalidScannedValue)
+            return
+        }
         
         // Send value to our delegate (the thing that talks to swiftUI)
         scannerDelegate?.didFind(barcode: barcode)

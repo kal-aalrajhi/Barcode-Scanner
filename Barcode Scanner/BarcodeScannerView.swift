@@ -32,7 +32,7 @@ struct BarcodeScannerView: View {
     var body: some View {
         NavigationView {
             VStack {
-                ScannerView(scannedCode: $scannedCode)
+                ScannerView(scannedCode: $scannedCode, alertItem: $alertItem)
                     .frame(maxWidth: .infinity, maxHeight: 300)
                 
                 Spacer().frame(height: 60)
@@ -50,6 +50,7 @@ struct BarcodeScannerView: View {
             }
             .navigationTitle("Barcode Scanner")
             .alert(item: $alertItem) { alertItem in
+                // Variable contexts for what the alert is for
                 Alert(title: Text(alertItem.title),
                       message: Text(alertItem.message),
                       dismissButton: alertItem.dismissButton)

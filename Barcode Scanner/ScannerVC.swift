@@ -16,7 +16,7 @@ enum CameraError: String {
 // we're saying what we want to send over
 protocol ScannerVCDelegate: AnyObject {
     func didFind(barcode: String)
-    func didSurface(error: "")
+    func didSurface(error: CameraError)
 }
 
 final class ScannerVC: UIViewController {

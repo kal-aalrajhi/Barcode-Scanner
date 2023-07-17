@@ -7,9 +7,16 @@
 
 import SwiftUI
 
+struct AlertItem {
+    let title: String
+    let message: String
+    let dismissButton: Alert.Button
+}
+
+
 struct BarcodeScannerView: View {
     @State private var scannedCode = ""
-    
+    @State private var alertItem: AlertItem?
     
     var body: some View {
         NavigationView {
@@ -27,6 +34,8 @@ struct BarcodeScannerView: View {
                     .font(.largeTitle)
                     .foregroundColor(scannedCode.isEmpty ? .red : .green)
                     .padding()
+                
+                
             }
             .navigationTitle("Barcode Scanner")
         }

@@ -40,6 +40,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B728246F2A64F79E00211D62 /* BarcodeScanner */ = {
+			isa = PBXGroup;
+			children = (
+				B728246D2A64F4DE00211D62 /* BarcodeScannerViewModel.swift */,
+				B75432FC2A62EC100048FE35 /* BarcodeScannerView.swift */,
+			);
+			path = BarcodeScanner;
+			sourceTree = "<group>";
+		};
+		B72824702A64F7C300211D62 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B72824712A64F7D200211D62 /* UIKit Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B72824712A64F7D200211D62 /* UIKit Components */ = {
+			isa = PBXGroup;
+			children = (
+				B72824692A639E4700211D62 /* ScannerView.swift */,
+				B72824672A6390C300211D62 /* ScannerVC.swift */,
+			);
+			path = "UIKit Components";
+			sourceTree = "<group>";
+		};
+		B72824722A64F7FE00211D62 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B728246B2A64F46E00211D62 /* Alert.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		B75432E22A62EB930048FE35 = {
 			isa = PBXGroup;
 			children = (
@@ -60,11 +94,9 @@
 			isa = PBXGroup;
 			children = (
 				B75432EE2A62EB930048FE35 /* Barcode_ScannerApp.swift */,
-				B75432FC2A62EC100048FE35 /* BarcodeScannerView.swift */,
-				B72824692A639E4700211D62 /* ScannerView.swift */,
-				B72824672A6390C300211D62 /* ScannerVC.swift */,
-				B728246B2A64F46E00211D62 /* Alert.swift */,
-				B728246D2A64F4DE00211D62 /* BarcodeScannerViewModel.swift */,
+				B72824722A64F7FE00211D62 /* Utilities */,
+				B72824702A64F7C300211D62 /* Views */,
+				B728246F2A64F79E00211D62 /* BarcodeScanner */,
 				B75432F22A62EB940048FE35 /* Assets.xcassets */,
 				B75432F42A62EB940048FE35 /* Preview Content */,
 			);

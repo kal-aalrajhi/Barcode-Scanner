@@ -13,6 +13,16 @@ struct AlertItem {
     let dismissButton: Alert.Button
 }
 
+struct AlertContext {
+    static let invalidDeviceInput = AlertItem(title: "Invalid Device Input",
+                                              message: "We are unable to capture the input.",
+                                              dismissButton: .default(Text("Ok")))
+    
+    static let invalidScannedType = AlertItem(title: "Invalid Scan Type",
+                                              message: "Please use EAN-8 and EAN-13 barcode types.",
+                                              dismissButton: .default(Text("Ok")))
+}
+
 
 struct BarcodeScannerView: View {
     @State private var scannedCode = ""
